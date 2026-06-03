@@ -1,23 +1,62 @@
 ---
 ---
-<section class="relative overflow-hidden py-20 px-4">
-  <div class="absolute inset-0 bg-gradient-to-br from-neon-purple/10 via-transparent to-neon-cyan/10"></div>
+<section class="relative overflow-hidden py-24 px-4">
+  <!-- Animated gradient orbs -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute w-96 h-96 rounded-full bg-neon-pink/10 blur-3xl top-10 left-10 animate-pulse"></div>
+    <div class="absolute w-80 h-80 rounded-full bg-neon-purple/10 blur-3xl top-20 right-20 animate-pulse" style="animation-delay:0.5s"></div>
+    <div class="absolute w-72 h-72 rounded-full bg-neon-cyan/10 blur-3xl bottom-20 left-1/3 animate-pulse" style="animation-delay:1s"></div>
+  </div>
+
+  <!-- Grid overlay -->
+  <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(181,55,242,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(181,55,242,0.3) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
   <div class="relative max-w-7xl mx-auto text-center">
-    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-purple/10 border border-neon-purple/20 mb-8 reveal">
+      <span class="w-2 h-2 rounded-full bg-neon-pink animate-pulse"></span>
+      <span class="text-sm font-semibold text-neon-purple">🎌 Atualizado em Junho 2025</span>
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight reveal" style="transition-delay:100ms">
       O seu portal<br />
-      <span class="text-neon-pink neon-glow">otaku</span> <span class="text-neon-cyan">definitivo</span>
+      <span class="gradient-text neon-glow">otaku</span> <span class="text-neon-cyan neon-glow">definitivo</span>
     </h1>
-    <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">
+
+    <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10 reveal" style="transition-delay:200ms">
       Reviews sinceros, notícias em tempo real e rankings que você vai querer discutir. 
-      Feito por fãs, para fãs.
+      Feito por fãs, para fãs. 🩷
     </p>
-    <div class="flex gap-4 justify-center flex-wrap">
-      <a href="/reviews" class="px-8 py-3 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-neon-pink/30">
-        Ver Reviews
+
+    <div class="flex gap-4 justify-center flex-wrap mb-16 reveal" style="transition-delay:300ms">
+      <a href="/reviews" class="group px-8 py-3 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold rounded-full hover:scale-105 transition-transform shadow-lg shadow-neon-pink/30 flex items-center gap-2">
+        <span>Ver Reviews</span>
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
       </a>
-      <a href="/rankings" class="px-8 py-3 border border-neon-cyan text-neon-cyan font-bold rounded-full hover:bg-neon-cyan/10 transition-colors">
-        Rankings
+      <a href="/rankings" class="px-8 py-3 border border-neon-cyan text-neon-cyan font-bold rounded-full hover:bg-neon-cyan/10 transition-colors flex items-center gap-2">
+        <span>🏆 Rankings</span>
       </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-6 max-w-2xl mx-auto reveal" style="transition-delay:400ms">
+      {[
+        { label: "Reviews", value: "128+" },
+        { label: "Animes", value: "500+" },
+        { label: "Fãs", value: "10k+" },
+      ].map(stat => (
+        <div class="text-center p-4 rounded-2xl bg-gray-900/50 border border-gray-800 backdrop-blur-sm">
+          <div class="text-2xl font-black text-neon-pink neon-glow">{stat.value}</div>
+          <div class="text-xs text-gray-400 mt-1 uppercase tracking-wider">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 reveal" style="transition-delay:600ms">
+    <span class="text-xs uppercase tracking-widest">Scroll</span>
+    <div class="w-5 h-8 border-2 border-gray-600 rounded-full flex justify-center pt-1">
+      <div class="w-1 h-2 bg-neon-pink rounded-full animate-bounce"></div>
     </div>
   </div>
 </section>

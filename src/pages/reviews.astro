@@ -3,13 +3,16 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+const filters = ["Todos", "Shonen", "Seinen", "Slice of Life", "Romance", "Horror", "Mecha"];
 const reviews = [
-  { title: "Frieren: Beyond Journey's End", score: "10/10", veredict: "Obra-prima absoluta", img: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg", desc: "Uma história sobre o tempo, a perda e o que significa realmente amar alguém." },
-  { title: "One Piece - Egghead Arc", score: "9.5/10", veredict: "Revolução científica", img: "https://cdn.myanimelist.net/images/anime/6/73245.jpg", desc: "O arco mais inteligente da história de One Piece, com revelações que mudam tudo." },
-  { title: "Kimetsu no Yaiba: Hashira Training", score: "9/10", veredict: "Emocionante e visualmente incrível", img: "https://cdn.myanimelist.net/images/anime/6/101186.jpg", desc: "A MAPPA entrega novamente com uma qualidade de animação que beira o cinema." },
-  { title: "Jujutsu Kaisen - Shinjuku Showdown", score: "8.5/10", veredict: "Batalhas épicas", img: "https://cdn.myanimelist.net/images/anime/1/191262.jpg", desc: "O confronto entre Gojo e Sukuna finalmente acontece, e é tudo que esperávamos e mais." },
-  { title: "Chainsaw Man - Denji's Return", score: "8/10", veredict: "Sangrentamente bom", img: "https://cdn.myanimelist.net/images/anime/6/194041.jpg", desc: "A segunda temporada recupera a essência do que tornou CSM special." },
-  { title: "Spy x Family: Operation Harvest", score: "9/10", veredict: "Conquistou meu coração", img: "https://cdn.myanimelist.net/images/anime/8/200441.jpg", desc: "A família mais dysfunctional e adorável do anime está de volta." },
+  { title: "Frieren: Beyond Journey's End", score: "10/10", veredict: "Obra-prima absoluta", img: "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg", desc: "Uma história sobre o tempo, a perda e o que significa realmente amar alguém.", cat: "Seinen", ep: "28 Episódios", year: "2023" },
+  { title: "One Piece - Egghead Arc", score: "9.5/10", veredict: "Revolução científica", img: "https://cdn.myanimelist.net/images/anime/6/73245l.jpg", desc: "O arco mais inteligente da história de One Piece, com revelações que mudam tudo.", cat: "Shonen", ep: "Em andamento", year: "2024" },
+  { title: "Kimetsu no Yaiba: Hashira Training", score: "9/10", veredict: "Emocionante e visualmente incrível", img: "https://cdn.myanimelist.net/images/anime/6/101186l.jpg", desc: "A MAPPA entrega novamente com uma qualidade de animação que beira o cinema.", cat: "Shonen", ep: "Filme + Arco TV", year: "2024" },
+  { title: "Jujutsu Kaisen - Shinjuku Showdown", score: "8.5/10", veredict: "Batalhas épicas", img: "https://cdn.myanimelist.net/images/anime/1/191262l.jpg", desc: "O confronto entre Gojo e Sukuna finalmente acontece, e é tudo que esperávamos e mais.", cat: "Shonen", ep: " Episódios", year: "2024" },
+  { title: "Chainsaw Man - Denji's Return", score: "8/10", veredict: "Sangrentamente bom", img: "https://cdn.myanimelist.net/images/anime/6/194041l.jpg", desc: "A segunda temporada recupera a essência do que tornou CSM special.", cat: "Seinen", ep: "12 Episódios", year: "2025" },
+  { title: "Spy x Family: Operation Harvest", score: "9/10", veredict: "Conquistou meu coração", img: "https://cdn.myanimelist.net/images/anime/8/200441l.jpg", desc: "A família mais dysfunctional e adorável do anime está de volta.", cat: "Comédia", ep: "24 Episódios", year: "2025" },
+  { title: "Attack on Titan: Final Season", score: "9.1/10", veredict: "Conclusão histórica", img: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg", desc: "A conclusão mais impactante da década, com themes que ressoam para sempre.", cat: "Seinen", ep: " Episódios", year: "2021" },
+  { title: "Vinland Saga Season 2", score: "9.5/10", veredict: "Mestre obra épica", img: "https://cdn.myanimelist.net/images/anime/12/76049l.jpg", desc: "Mais lento mas profundamente reward, Thorfinn's jornada de redenção.", cat: "Seinen", ep: "24 Episódios", year: "2024" },
 ];
 ---
 
@@ -17,33 +20,65 @@ const reviews = [
   <Header />
   
   <main class="max-w-7xl mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-5xl font-black mb-4">
+
+    <!-- Page Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-pink/10 border border-neon-pink/20 mb-6">
+        <span class="text-xl">✨</span>
+        <span class="text-sm font-semibold text-neon-pink">Reviews honests e detalhados</span>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-black mb-4">
         <span class="text-neon-pink neon-glow">Reviews</span> de Animes
       </h1>
-      <p class="text-gray-400 text-lg">Análises profundas e veredictos honestos</p>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">Análises profundas, sem spoilers desnecessários, com veredictos honestos. Porque você merece saber no que está se metendo.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
+    <!-- Filter tags -->
+    <div class="flex flex-wrap gap-2 mb-10 justify-center reveal">
+      {filters.map((f, i) => (
+        <button class={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${i === 0 ? 'bg-neon-pink text-white' : 'bg-gray-900 border border-gray-700 text-gray-300 hover:border-neon-pink hover:text-neon-pink'}`}>
+          {f}
+        </button>
+      ))}
+    </div>
+
+    <!-- Reviews grid -->
+    <div class="grid md:grid-cols-2 gap-8 stagger-children">
       {reviews.map(r => (
-        <article class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover flex flex-col md:flex-row">
-          <div class="md:w-2/5 aspect-video md:aspect-auto overflow-hidden">
-            <img src={r.img} alt={r.title} class="w-full h-full object-cover" loading="lazy" />
-          </div>
-          <div class="p-6 flex-1 flex flex-col">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-3xl font-black font-mono text-neon-cyan">{r.score}</span>
-              <span class="text-sm text-neon-pink font-semibold">{r.veredict}</span>
+        <article class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover shimmer reveal group">
+          <div class="flex flex-col sm:flex-row">
+            <div class="sm:w-2/5 aspect-video sm:aspect-auto overflow-hidden relative">
+              <img src={r.img} alt={r.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              <div class="absolute top-3 left-3 px-2 py-1 text-xs font-bold rounded bg-neon-purple/80 text-white backdrop-blur-sm">{r.cat}</div>
             </div>
-            <h2 class="text-xl font-bold mb-2">{r.title}</h2>
-            <p class="text-gray-400 text-sm flex-1">{r.desc}</p>
-            <button class="mt-4 px-6 py-2 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold rounded-lg hover:scale-105 transition-transform">
-              Ler Review
-            </button>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="text-3xl font-black font-mono text-neon-cyan">{r.score}</span>
+                  <div class="flex flex-col">
+                    <span class="text-sm text-neon-pink font-semibold">{r.veredict}</span>
+                    <span class="text-xs text-gray-500">{r.ep} • {r.year}</span>
+                  </div>
+                </div>
+              </div>
+              <h2 class="text-xl font-bold mb-2 group-hover:text-neon-pink transition-colors leading-tight">{r.title}</h2>
+              <p class="text-gray-400 text-sm flex-1 mb-4">{r.desc}</p>
+              <button class="mt-auto px-6 py-2 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold rounded-lg hover:scale-105 transition-transform text-sm self-start group-hover:shadow-lg group-hover:shadow-neon-pink/20">
+                Ler Review →
+              </button>
+            </div>
           </div>
         </article>
       ))}
     </div>
+
+    <!-- Load more -->
+    <div class="text-center mt-12 reveal">
+      <button class="px-10 py-3 bg-gray-900 border border-gray-700 text-gray-300 font-bold rounded-full hover:border-neon-pink hover:text-neon-pink transition-all">
+        Carregar mais reviews ↓
+      </button>
+    </div>
+
   </main>
 
   <Footer />

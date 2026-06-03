@@ -4,46 +4,70 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const rankings = [
-  { pos: 1,  title: "Frieren: Beyond Journey's End",      score: "10.0", cat: "Drama/Fantasy",   img: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg" },
-  { pos: 2,  title: "One Piece",                          score: "9.8",  cat: "Adventure",       img: "https://cdn.myanimelist.net/images/anime/6/73245.jpg" },
-  { pos: 3,  title: "Hunter x Hunter (2011)",              score: "9.7",  cat: "Action",          img: "https://cdn.myanimelist.net/images/anime/6/20057.jpg" },
-  { pos: 4,  title: "Fullmetal Alchemist: Brotherhood",   score: "9.6",  cat: "Action/Drama",   img: "https://cdn.myanimelist.net/images/anime/5/11607.jpg" },
-  { pos: 5,  title: "Vinland Saga",                       score: "9.5",  cat: "Action/Drama",   img: "https://cdn.myanimelist.net/images/anime/12/76049.jpg" },
-  { pos: 6,  title: "Kimetsu no Yaiba",                   score: "9.4",  cat: "Action",          img: "https://cdn.myanimelist.net/images/anime/6/101186.jpg" },
-  { pos: 7,  title: "Jujutsu Kaisen",                     score: "9.3",  cat: "Action/Horror",   img: "https://cdn.myanimelist.net/images/anime/1/191262.jpg" },
-  { pos: 8,  title: "Cyberpunk: Edgerunners",             score: "9.2",  cat: "Sci-Fi/Action",   img: "https://cdn.myanimelist.net/images/anime/1038/122217.jpg" },
-  { pos: 9,  title: "Attack on Titan",                    score: "9.1",  cat: "Action/Drama",   img: "https://cdn.myanimelist.net/images/anime/10/47347.jpg" },
-  { pos: 10, title: "Mob Psycho 100",                     score: "9.0",  cat: "Action/Comedy",   img: "https://cdn.myanimelist.net/images/anime/9/77809.jpg" },
+  { pos: 1,  title: "Frieren: Beyond Journey's End",      score: "10.0", cat: "Drama/Fantasy",   img: "https://cdn.myanimelist.net/images/anime/1015/138006l.jpg", desc: "A definição moderna de obra-prima animada." },
+  { pos: 2,  title: "One Piece",                          score: "9.8",  cat: "Adventure",       img: "https://cdn.myanimelist.net/images/anime/6/73245l.jpg",   desc: "A maior história já contada em anime." },
+  { pos: 3,  title: "Hunter x Hunter (2011)",             score: "9.7",  cat: "Action",          img: "https://cdn.myanimelist.net/images/anime/6/20057l.jpg",   desc: "Togashi em seu estado mais puro e genial." },
+  { pos: 4,  title: "Fullmetal Alchemist: Brotherhood",   score: "9.6",  cat: "Action/Drama",    img: "https://cdn.myanimelist.net/images/anime/5/11607l.jpg",  desc: "Perfeição do início ao fim." },
+  { pos: 5,  title: "Vinland Saga",                       score: "9.5",  cat: "Action/Drama",    img: "https://cdn.myanimelist.net/images/anime/12/76049l.jpg", desc: "Épico histórico com profundidade filosófica." },
+  { pos: 6,  title: "Kimetsu no Yaiba",                   score: "9.4",  cat: "Action",          img: "https://cdn.myanimelist.net/images/anime/6/101186l.jpg", desc: "Animação de tirar o fôlego." },
+  { pos: 7,  title: "Jujutsu Kaisen",                     score: "9.3",  cat: "Action/Horror",   img: "https://cdn.myanimelist.net/images/anime/1/191262l.jpg", desc: "Shonen moderno no seu auge." },
+  { pos: 8,  title: "Cyberpunk: Edgerunners",             score: "9.2",  cat: "Sci-Fi/Action",   img: "https://cdn.myanimelist.net/images/anime/1038/122217l.jpg", desc: "A obra-prima de Trigger." },
+  { pos: 9,  title: "Attack on Titan",                    score: "9.1",  cat: "Action/Drama",    img: "https://cdn.myanimelist.net/images/anime/10/47347l.jpg", desc: "Uma experiência narrativa única." },
+  { pos: 10, title: "Mob Psycho 100",                     score: "9.0",  cat: "Action/Comedy",   img: "https://cdn.myanimelist.net/images/anime/9/77809l.jpg", desc: "Comédia, emoção e arte em perfeita harmonia." },
 ];
+
+const medals = { 1: { color: '#ffd700', emoji: '🥇' }, 2: { color: '#c0c0c0', emoji: '🥈' }, 3: { color: '#cd7f32', emoji: '🥉' } };
 ---
 
 <Base title="Rankings" description="Top 10 melhores animes de todos os tempos">
   <Header />
   
   <main class="max-w-4xl mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-      <h1 class="text-5xl font-black mb-4">
+
+    <!-- Page Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="text-5xl mb-4">🏆</div>
+      <h1 class="text-5xl md:text-6xl font-black mb-4">
         <span class="text-neon-purple neon-glow">Top 10</span> Animes
       </h1>
-      <p class="text-gray-400 text-lg">Os melhores animes já feitos, segundo nossa curadoria</p>
+      <p class="text-gray-400 text-lg">Os melhores animes já feitos, curados pela nossa equipe com amor e objetividade.</p>
     </div>
 
+    <!-- Ranking list -->
     <div class="space-y-4">
-      {rankings.map(r => (
-        <div class={`flex items-center gap-5 p-4 rounded-2xl bg-gray-900 border border-gray-800 card-hover ${r.pos <= 3 ? 'border-l-4' : ''}`}
-          style={r.pos === 1 ? 'border-color: #ffd700' : r.pos === 2 ? 'border-color: #c0c0c0' : r.pos === 3 ? 'border-color: #cd7f32' : ''}>
-          <span class={`text-3xl font-black w-10 text-center ${r.pos === 1 ? 'text-yellow-400' : r.pos === 2 ? 'text-gray-300' : r.pos === 3 ? 'text-orange-400' : 'text-gray-600'}`}>
-            #{r.pos}
-          </span>
-          <img src={r.img} alt={r.title} class="w-16 h-16 rounded-xl object-cover" />
-          <div class="flex-1">
-            <h3 class="font-bold text-lg">{r.title}</h3>
-            <span class="text-xs text-gray-500">{r.cat}</span>
+      {rankings.map(r => {
+        const medal = medals[r.pos];
+        return (
+          <div class="reveal group flex items-center gap-5 p-5 rounded-2xl bg-gray-900 border border-gray-800 card-hover shimmer"
+            style={r.pos <= 3 ? `border-left: 4px solid ${medal.color}` : ''}>
+            <span class={`text-3xl font-black w-12 text-center ${r.pos === 1 ? 'text-yellow-400' : r.pos === 2 ? 'text-gray-300' : r.pos === 3 ? 'text-orange-400' : 'text-gray-600'}`}>
+              #{r.pos}
+            </span>
+            <img src={r.img} alt={r.title} class="w-16 h-16 rounded-xl object-cover group-hover:scale-105 transition-transform" />
+            <div class="flex-1 min-w-0">
+              <h3 class="font-bold text-lg group-hover:text-neon-pink transition-colors">{r.title}</h3>
+              <span class="text-xs text-gray-500">{r.cat}</span>
+              <p class="text-xs text-gray-400 mt-1 hidden sm:block">{r.desc}</p>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-black font-mono text-neon-cyan">{r.score}</div>
+              <div class="text-xs text-gray-500">pontos</div>
+            </div>
+            {medal && <span class="text-2xl">{medal.emoji}</span>}
           </div>
-          <span class="text-2xl font-black font-mono text-neon-cyan">{r.score}</span>
-        </div>
-      ))}
+        );
+      })}
     </div>
+
+    <!-- Vote CTA -->
+    <div class="mt-12 p-8 rounded-2xl bg-gradient-to-r from-neon-purple/10 to-neon-pink/10 border border-neon-purple/20 text-center reveal">
+      <h2 class="text-2xl font-black mb-3">Discorda da lista?</h2>
+      <p class="text-gray-400 mb-6">Vote nos seus favoritos e veja o ranking da comunidade!</p>
+      <button class="px-10 py-3 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold rounded-full hover:scale-105 transition-transform">
+        Votar agora 🗳️
+      </button>
+    </div>
+
   </main>
 
   <Footer />
