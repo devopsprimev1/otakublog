@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const news = [
+  { title: "One Piece: Netflix confirma temporada 2 de Live Action", date: "02 Jun 2025", img: "https://picsum.photos/seed/opla/600/400", desc: "Eiichiro Oda aprova novos cenários para a segunda temporada." },
+  { title: "Studio Pierrot anuncia novo anime de Masashi Kishimoto", date: "01 Jun 2025", img: "https://picsum.photos/seed/pierrot/600/400", desc: "Será uma história original do autor de Naruto." },
+  { title: "Demon Slayer: Hashira Training quebra recordes de bilheteria", date: "31 Mai 2025", img: "https://picsum.photos/seed/dsmovie/600/400", desc: "Filme arrecadou 50 milhões de dólares na abertura." },
+  { title: "Crunchyroll anuncia expansão para mercados asiáticos", date: "30 Mai 2025", img: "https://picsum.photos/seed/cr/600/400", desc: "Plataforma vai lançar legendas em 10 novos idiomas." },
+];
+---
+
+<Base title="Notícias" description=" últimas notícias do mundo otaku e anime">
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-black mb-4">
+        <span class="text-neon-cyan neon-glow">Notícias</span> em tempo real
+      </h1>
+      <p class="text-gray-400 text-lg">Fique por dentro do universo otaku</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {news.map(n => (
+        <article class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover">
+          <div class="aspect-video overflow-hidden">
+            <img src={n.img} alt={n.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <span class="text-xs text-gray-500 font-mono">{n.date}</span>
+            <h2 class="text-xl font-bold mt-2 mb-3 hover:text-neon-cyan transition-colors">{n.title}</h2>
+            <p class="text-gray-400 text-sm">{n.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Base>

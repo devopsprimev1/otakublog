@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Footer from '../components/Footer.astro';
+
+const featured = [
+  { title: "Kimetsu no Yaiba: Hashira Training Arc - Review", cat: "Review", tag: "9.5/10", img: "https://picsum.photos/seed/anime1/600/400", desc: "Um arco que eleva a série a novos patamarões de animação e narrativa." },
+  { title: "One Piece finally reaches Egghead Arc", cat: "Notícia", tag: "🔥 Hot", img: "https://picsum.photos/seed/onepiece/600/400", desc: "Luffy ecrew chegam à ilha científica mais avançada do mundo." },
+  { title: "Top 10 Animes de todos os tempos - 2025", cat: "Ranking", tag: "📊 Atualizado", img: "https://picsum.photos/seed/ranking/600/400", desc: "Nossa lista definitiva com os melhores animes já feitos." },
+];
+
+const latest = [
+  { title: "Frieren: Beyond Journey's End - Review", cat: "Review", tag: "10/10", img: "https://picsum.photos/seed/frieren/400/250" },
+  { title: "Studio Ghibli ganha novo filme em 2026", cat: "Notícia", tag: "Novo", img: "https://picsum.photos/seed/ghibli/400/250" },
+  { title: "Demon Slayer: Katana do Tribunal", cat: "Filme", tag: "Estréia", img: "https://picsum.photos/seed/demonslayer/400/250" },
+  { title: "Jujutsu Kaisen: Gojo vs Sukuna", cat: "Enredo", tag: "🔥", img: "https://picsum.photos/seed/jjk/400/250" },
+];
+---
+
+<Base title="Home">
+  <Header />
+  <Hero />
+  
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Featured Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-black mb-8 flex items-center gap-3">
+        <span class="w-1 h-8 bg-neon-pink rounded-full"></span>
+        Em destaque
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        {featured.map(post => (
+          <article class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover">
+            <div class="aspect-video overflow-hidden">
+              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="px-2 py-1 text-xs font-bold rounded bg-neon-purple/20 text-neon-purple">{post.cat}</span>
+                <span class="text-xs font-mono text-neon-cyan">{post.tag}</span>
+              </div>
+              <h3 class="font-bold text-lg mb-2 group-hover:text-neon-pink transition-colors">{post.title}</h3>
+              <p class="text-gray-400 text-sm">{post.desc}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Latest Section -->
+    <section>
+      <h2 class="text-3xl font-black mb-8 flex items-center gap-3">
+        <span class="w-1 h-8 bg-neon-cyan rounded-full"></span>
+        Últimos posts
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {latest.map(post => (
+          <article class="group bg-gray-900 rounded-xl overflow-hidden border border-gray-800 card-hover">
+            <div class="aspect-video overflow-hidden">
+              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="p-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-1 text-xs font-bold rounded bg-neon-pink/20 text-neon-pink">{post.cat}</span>
+                <span class="text-xs font-mono text-neon-cyan">{post.tag}</span>
+              </div>
+              <h3 class="font-semibold text-sm group-hover:text-neon-pink transition-colors">{post.title}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

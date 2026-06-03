@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const reviews = [
+  { title: "Frieren: Beyond Journey's End", score: "10/10", veredict: "Obra-prima absoluta", img: "https://picsum.photos/seed/frieren2/600/400", desc: "Uma história sobre o tempo, a perda e o que significa realmente amar alguém." },
+  { title: "One Piece - Egghead Arc", score: "9.5/10", veredict: "Revolução científica", img: "https://picsum.photos/seed/egghead/600/400", desc: "O arco mais inteligente da história de One Piece, com revelações que mudam tudo." },
+  { title: "Kimetsu no Yaiba: Hashira Training", score: "9/10", veredict: "Emocionante e visualmente incrível", img: "https://picsum.photos/seed/kny/600/400", desc: "A MAPPA entrega novamente com uma qualidade de animação que beira o cinema." },
+  { title: "Jujutsu Kaisen - Shinjuku Showdown", score: "8.5/10", veredict: "Batalhas épicas", img: "https://picsum.photos/seed/jjk2/600/400", desc: "O confronto entre Gojo e Sukuna finalmente acontece, e é tudo que esperávamos e mais." },
+  { title: "Chainsaw Man - Denji's Return", score: "8/10", veredict: "Sangrentamente bom", img: "https://picsum.photos/seed/csm/600/400", desc: "A segunda temporada recupera a esencia do que tornou CSM special." },
+  { title: "Spy x Family: Operation Harvest", score: "9/10", veredict: "Conquistou meu coração", img: "https://picsum.photos/seed/spyxfamily/600/400", desc: "A família mais dysfunctional e adorável do anime está de volta." },
+];
+---
+
+<Base title="Reviews" description="Reviews completos e sinceros dos melhores animes">
+  <Header />
+  
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-black mb-4">
+        <span class="text-neon-pink neon-glow">Reviews</span> de Animes
+      </h1>
+      <p class="text-gray-400 text-lg">Análises profundas e veredictos honestos</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {reviews.map(r => (
+        <article class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover flex flex-col md:flex-row">
+          <div class="md:w-2/5 aspect-video md:aspect-auto overflow-hidden">
+            <img src={r.img} alt={r.title} class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-3xl font-black font-mono text-neon-cyan">{r.score}</span>
+              <span class="text-sm text-neon-pink font-semibold">{r.veredict}</span>
+            </div>
+            <h2 class="text-xl font-bold mb-2">{r.title}</h2>
+            <p class="text-gray-400 text-sm flex-1">{r.desc}</p>
+            <button class="mt-4 px-6 py-2 bg-gradient-to-r from-neon-pink to-neon-purple text-white font-bold rounded-lg hover:scale-105 transition-transform">
+              Ler Review
+            </button>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Base>

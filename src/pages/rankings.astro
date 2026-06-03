@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const rankings = [
+  { pos: 1, title: "Frieren: Beyond Journey's End", score: "10.0", cat: "Drama/Fantasy", img: "https://picsum.photos/seed/frieren3/100/100" },
+  { pos: 2, title: "One Piece", score: "9.8", cat: "Adventure", img: "https://picsum.photos/seed/op/100/100" },
+  { pos: 3, title: "Hunter x Hunter (2011)", score: "9.7", cat: "Action", img: "https://picsum.photos/seed/hxh/100/100" },
+  { pos: 4, title: "Fullmetal Alchemist: Brotherhood", score: "9.6", cat: "Action/Drama", img: "https://picsum.photos/seed/fmab/100/100" },
+  { pos: 5, title: "Vinland Saga", score: "9.5", cat: "Action/Drama", img: "https://picsum.photos/seed/vs/100/100" },
+  { pos: 6, title: "Kimetsu no Yaiba", score: "9.4", cat: "Action", img: "https://picsum.photos/seed/kny2/100/100" },
+  { pos: 7, title: "Jujutsu Kaisen", score: "9.3", cat: "Action/Horror", img: "https://picsum.photos/seed/jjk3/100/100" },
+  { pos: 8, title: "Cyberpunk: Edgerunners", score: "9.2", cat: "Sci-Fi/Action", img: "https://picsum.photos/seed/edgerunners/100/100" },
+  { pos: 9, title: "Attack on Titan", score: "9.1", cat: "Action/Drama", img: "https://picsum.photos/seed/aot/100/100" },
+  { pos: 10, title: "Mob Psycho 100", score: "9.0", cat: "Action/Comedy", img: "https://picsum.photos/seed/mob/100/100" },
+];
+---
+
+<Base title="Rankings" description="Top 10 melhores animes de todos os tempos">
+  <Header />
+  
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-black mb-4">
+        <span class="text-neon-purple neon-glow">Top 10</span> Animes
+      </h1>
+      <p class="text-gray-400 text-lg">Os melhores animes já feitos, segundo nossa curadoria</p>
+    </div>
+
+    <div class="space-y-4">
+      {rankings.map(r => (
+        <div class={`flex items-center gap-5 p-4 rounded-2xl bg-gray-900 border border-gray-800 card-hover ${r.pos <= 3 ? 'border-l-4' : ''}`}
+          style={r.pos === 1 ? 'border-color: #ffd700' : r.pos === 2 ? 'border-color: #c0c0c0' : r.pos === 3 ? 'border-color: #cd7f32' : ''}>
+          <span class={`text-3xl font-black w-10 text-center ${r.pos === 1 ? 'text-yellow-400' : r.pos === 2 ? 'text-gray-300' : r.pos === 3 ? 'text-orange-400' : 'text-gray-600'}`}>
+            #{r.pos}
+          </span>
+          <img src={r.img} alt={r.title} class="w-16 h-16 rounded-xl object-cover" />
+          <div class="flex-1">
+            <h3 class="font-bold text-lg">{r.title}</h3>
+            <span class="text-xs text-gray-500">{r.cat}</span>
+          </div>
+          <span class="text-2xl font-black font-mono text-neon-cyan">{r.score}</span>
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Base>
