@@ -5,16 +5,16 @@ import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 
 const featured = [
-  { title: "Kimetsu no Yaiba: Hashira Training Arc - Review", cat: "Review", tag: "9.5/10", img: "https://picsum.photos/seed/anime1/600/400", desc: "Um arco que eleva a série a novos patamarões de animação e narrativa." },
-  { title: "One Piece finally reaches Egghead Arc", cat: "Notícia", tag: "🔥 Hot", img: "https://picsum.photos/seed/onepiece/600/400", desc: "Luffy ecrew chegam à ilha científica mais avançada do mundo." },
-  { title: "Top 10 Animes de todos os tempos - 2025", cat: "Ranking", tag: "📊 Atualizado", img: "https://picsum.photos/seed/ranking/600/400", desc: "Nossa lista definitiva com os melhores animes já feitos." },
+  { title: "Kimetsu no Yaiba: Hashira Training Arc - Review", cat: "Review", tag: "9.5/10", img: "https://cdn.myanimelist.net/images/anime/6/101186.jpg", desc: "Um arco que eleva a série a novos patamarões de animação e narrativa." },
+  { title: "One Piece finally reaches Egghead Arc", cat: "Notícia", tag: "🔥 Hot", img: "https://cdn.myanimelist.net/images/anime/6/73245.jpg", desc: "Luffy e crew chegam à ilha científica mais avançada do mundo." },
+  { title: "Top 10 Animes de todos os tempos - 2025", cat: "Ranking", tag: "📊 Atualizado", img: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg", desc: "Nossa lista definitiva com os melhores animes já feitos." },
 ];
 
 const latest = [
-  { title: "Frieren: Beyond Journey's End - Review", cat: "Review", tag: "10/10", img: "https://picsum.photos/seed/frieren/400/250" },
-  { title: "Studio Ghibli ganha novo filme em 2026", cat: "Notícia", tag: "Novo", img: "https://picsum.photos/seed/ghibli/400/250" },
-  { title: "Demon Slayer: Katana do Tribunal", cat: "Filme", tag: "Estréia", img: "https://picsum.photos/seed/demonslayer/400/250" },
-  { title: "Jujutsu Kaisen: Gojo vs Sukuna", cat: "Enredo", tag: "🔥", img: "https://picsum.photos/seed/jjk/400/250" },
+  { title: "Frieren: Beyond Journey's End - Review", cat: "Review", tag: "10/10", img: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg" },
+  { title: "Studio Ghibli ganha novo filme em 2026", cat: "Notícia", tag: "Novo", img: "https://cdn.myanimelist.net/images/anime/6/74077.jpg" },
+  { title: "Demon Slayer: Katana do Tribunal", cat: "Filme", tag: "Estréia", img: "https://cdn.myanimelist.net/images/anime/6/101186.jpg" },
+  { title: "Jujutsu Kaisen: Gojo vs Sukuna", cat: "Enredo", tag: "🔥", img: "https://cdn.myanimelist.net/images/anime/1/191262.jpg" },
 ];
 ---
 
@@ -33,7 +33,7 @@ const latest = [
         {featured.map(post => (
           <article class="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover">
             <div class="aspect-video overflow-hidden">
-              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-3">
@@ -58,7 +58,7 @@ const latest = [
         {latest.map(post => (
           <article class="group bg-gray-900 rounded-xl overflow-hidden border border-gray-800 card-hover">
             <div class="aspect-video overflow-hidden">
-              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
             <div class="p-4">
               <div class="flex items-center gap-2 mb-2">

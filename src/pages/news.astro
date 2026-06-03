@@ -4,10 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const news = [
-  { title: "One Piece: Netflix confirma temporada 2 de Live Action", date: "02 Jun 2025", img: "https://picsum.photos/seed/opla/600/400", desc: "Eiichiro Oda aprova novos cenários para a segunda temporada." },
-  { title: "Studio Pierrot anuncia novo anime de Masashi Kishimoto", date: "01 Jun 2025", img: "https://picsum.photos/seed/pierrot/600/400", desc: "Será uma história original do autor de Naruto." },
-  { title: "Demon Slayer: Hashira Training quebra recordes de bilheteria", date: "31 Mai 2025", img: "https://picsum.photos/seed/dsmovie/600/400", desc: "Filme arrecadou 50 milhões de dólares na abertura." },
-  { title: "Crunchyroll anuncia expansão para mercados asiáticos", date: "30 Mai 2025", img: "https://picsum.photos/seed/cr/600/400", desc: "Plataforma vai lançar legendas em 10 novos idiomas." },
+  { title: "One Piece: Netflix confirma temporada 2 de Live Action", date: "02 Jun 2025", img: "https://cdn.myanimelist.net/images/anime/6/73245.jpg", desc: "Eiichiro Oda aprova novos cenários para a segunda temporada." },
+  { title: "Studio Pierrot anuncia novo anime de Masashi Kishimoto", date: "01 Jun 2025", img: "https://cdn.myanimelist.net/images/anime/3/41234.jpg", desc: "Será uma história original do autor de Naruto." },
+  { title: "Demon Slayer: Hashira Training quebra recordes de bilheteria", date: "31 Mai 2025", img: "https://cdn.myanimelist.net/images/anime/6/101186.jpg", desc: "Filme arrecadou 50 milhões de dólares na abertura." },
+  { title: "Crunchyroll anuncia expansão para mercados asiáticos", date: "30 Mai 2025", img: "https://cdn.myanimelist.net/images/anime/11/75223.jpg", desc: "Plataforma vai lançar legendas em 10 novos idiomas." },
 ];
 ---
 
@@ -26,7 +26,7 @@ const news = [
       {news.map(n => (
         <article class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 card-hover">
           <div class="aspect-video overflow-hidden">
-            <img src={n.img} alt={n.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <img src={n.img} alt={n.title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
           </div>
           <div class="p-6">
             <span class="text-xs text-gray-500 font-mono">{n.date}</span>
